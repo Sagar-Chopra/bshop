@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import mobileImage from "../images/mobileImage.jpg";
+import { Products } from "./dummyData/DummyData";
 
 const ProductDetails = () => {
+  var { id } = useParams();
+  const [data, setdata] = useState();
+
+  useEffect(() => {
+    Products?.map((product) => {
+      if (id == product.id) {
+        setdata(product)
+      }
+    })
+  }, [id]);
+ 
+
   return (
     <div>
       <div className="productDetailsGrid">
         <div></div>
         <div>
-          <h4>Nillkin iphone X cover</h4>
+
+          <h4>{data?.name}</h4>
           <p>10000 ks</p>
           <button>Add To Cart</button>
           <button>Buy Now</button>

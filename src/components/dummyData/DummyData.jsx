@@ -7,7 +7,7 @@ export const Products = [
     image: mobileImage,
     category: "cases and cover",
     brand: "Apple",
-    price: "10000"
+    price: 10000
   },
   {
     id: 2,
@@ -15,7 +15,15 @@ export const Products = [
     image: mobileImage,
     category: "cases and cover",
     brand: "Samsung",
-    price: "8000"
+    price: 8000
+  },
+  {
+    id: 3,
+    name: "Google Pixel",
+    image: mobileImage,
+    category: "cases and cover",
+    brand: "Google",
+    price: 12000
   },
 ];
 

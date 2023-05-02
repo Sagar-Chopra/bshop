@@ -23,8 +23,9 @@ const AllProducts = () => {
     initialState.length > 0 && setQueryRender(false);
   }, [initialState]);
 
-
-  console.log(initialState)
+  const handleValue = (value) => {
+    setMaxVal(value);
+  };
   return (
     <div className="allProductsContainer">
       <div>
@@ -90,8 +91,18 @@ const AllProducts = () => {
 
                         {item?.name === "Price Range" && (
                           <div>
-                            <input type="text" onChange={(e) => setMinVal(e.target.value)} value={minVal} />
-                            <input type="text" onChange={(e) => setMaxVal(e.target.value)} value={maxVal} />
+                            <input
+                              type="text"
+                              onChange={(e) => setMinVal(e.target.value)}
+                              value={minVal}
+                            />
+                            <input
+                              type="text"
+                              onChange={(e) => {
+                                handleValue(e.target.value);
+                              }}
+                              value={maxVal}
+                            />
                           </div>
                         )}
                       </>
@@ -103,31 +114,36 @@ const AllProducts = () => {
       </div>
       <div>
         <div>
-            <select onChange={(e) => handleCheckboxChange(e.target.value)}>
-                <option value={"all"}>All Products</option>
-                <option value={"Apple"}>Apple</option>
-                <option value={"Samsung"}>Samsung</option>
-            </select>
+          <select onChange={(e) => handleCheckboxChange(e.target.value)}>
+            <option value={"all"}>All Products</option>
+            <option value={"Apple"}>Apple</option>
+            <option value={"Samsung"}>Samsung</option>
+          </select>
         </div>
         {queryRender &&
-          Products.map((item) => (
-            <div className="cardContainer">
-              <img src={item.image} className="mobileImage" />
-              <h4>Nillkin iphone X cover</h4>
-              <p>10000 ks</p>
-              <a href="/details">
-                <button>Details</button>
-              </a>
-            </div>
-          ))}
+          Products.map(
+            (item, index) =>
+              (maxVal > 0 ? item.price < maxVal : true) && (
+                <div key={index} className="cardContainer">
+                  <img src={item.image} className="mobileImage" />
+                  <h4>{item.name}</h4>
+                  <p>{item.price} ks</p>
+                  <a href="/details">
+                    <button>Details</button>
+                  </a>
+                </div>
+              )
+          )}
         {!queryRender &&
           Products.map((item) => (
             <>
-              {initialState.join().includes(item.brand)  && (
+              {((!maxVal && initialState.join().includes(item.brand)) ||
+                (initialState.join().includes(item.brand) &&
+                  item.price < maxVal)) && (
                 <div className="cardContainer">
                   <img src={item.image} className="mobileImage" />
                   <h4>{item.name}</h4>
-                  <p>10000 ks</p>
+                  <p>{item.price}</p>
                   <a href="/details">{/* <button>Details</button> */}</a>
                 </div>
               )}
