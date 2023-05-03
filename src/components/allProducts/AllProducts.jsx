@@ -39,16 +39,8 @@ const AllProducts = () => {
                     item?.data.map((value, index) => (
                       <>
                         {item?.name === "Browse" && (
-                          <div
-                            style={{
-                              display: "grid",
-                              gap: "5px",
-                              gridTemplateColumns: "repeat(2, 1fr)",
-                            }}
-                            className={"check"}
-                          >
+                          <div style={{ display: "flex" }}>
                             <input
-                              className="browsebutton"
                               key={index}
                               label={value}
                               type="checkbox"

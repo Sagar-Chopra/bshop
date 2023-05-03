@@ -43,6 +43,10 @@
   display: flex;
 }
 
+.links{
+  margin-right: 20px;
+}
+
 /* home page */
 
 .gridContainer{
@@ -71,6 +75,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.detailMobileImage{
+  height: 100%;
+
+width: 100%;}
 
 .relatedProductDetails{
   display: grid;

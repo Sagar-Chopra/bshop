@@ -19,11 +19,13 @@ const ProductDetails = () => {
   return (
     <div>
       <div className="productDetailsGrid">
-        <div></div>
+        <div>
+          <img src={mobileImage} className='detailMobileImage' />   
+        </div>
         <div>
 
           <h4>{data?.name}</h4>
-          <p>10000 ks</p>
+          <p>{data?.price}</p>
           <button>Add To Cart</button>
           <button>Buy Now</button>
           <h2>Details</h2>

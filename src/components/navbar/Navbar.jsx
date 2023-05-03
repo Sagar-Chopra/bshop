@@ -4,8 +4,11 @@ const Navbar = () => {
   return (
     <div className='detailContainer'>
         <div className='flex'>
-            <p>Shop</p>
-            <p>Explore</p>
+            <p className='links'>Shop</p>
+            <p className='links'>Explore</p>
+            <a href='/allproducts'>
+            <p className='links'>All Products</p>
+            </a>
         </div>
         <div className='flex'>
             <p>Add To Cart</p>
